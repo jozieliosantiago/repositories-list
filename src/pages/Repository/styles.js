@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 
 export const Loading = styled.div`
   color: #fff;
@@ -43,9 +43,6 @@ export const Owner = styled.header`
 `;
 
 export const IssueList = styled.ul`
-  padding-top: 30px;
-  margin-top: 30px;
-  border-top: solid 1px #eee;
   list-style: none;
 
   li {
@@ -97,6 +94,81 @@ export const IssueList = styled.ul`
         font-size: 12px;
         color: #999;
       }
+    }
+  }
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg)
+  } to {
+    transform: rotate(360deg)
+  }
+`;
+
+export const Loader = styled.div`
+  width: 100%;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${(props) =>
+    props.loadingIssues &&
+    css`
+      svg {
+        animation: ${rotate} 1s linear infinite;
+      }
+    `};
+`;
+
+export const Filter = styled.div`
+  margin-bottom: 20px;
+  margin-top: 30px;
+  padding-top: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border-top: solid 1px #eee;
+
+  label {
+    margin-bottom: 3px;
+  }
+
+  select {
+    background: none;
+    color: #7159c1;
+    border: solid 1px #7159c1;
+    padding: 2px 5px;
+    border-radius: 3px;
+
+    &[disabled] {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+  }
+`;
+
+export const Pagination = styled.div`
+  width: 100%;
+  display: flex;
+  padding-top: 20px;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    border: solid 1px #7159c1d6;
+    color: #7159c1d6;
+    padding: 5px;
+    background: #fff;
+    margin: 0 8px;
+    border-radius: 5px;
+    font-size: 0.9em;
+
+    &[disabled] {
+      cursor: not-allowed;
+      color: #7159c159;
+      border: solid 1px #7159c159;
     }
   }
 `;

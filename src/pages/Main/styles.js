@@ -7,6 +7,7 @@ export const Container = styled.div`
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   padding: 30px;
   margin: 80px auto;
+  overflow: hidden;
 
   h1 {
     font-size: 20px;
@@ -27,7 +28,7 @@ export const Form = styled.form`
 
   input {
     flex: 1;
-    border: solid 1px #eee;
+    border: solid 1px ${(props) => (props.error ? '#ff0000' : '#eee')};
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
